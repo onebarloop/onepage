@@ -3,4 +3,8 @@
 @theme {
   --spacing-header: 120px;
   --spacing-footer: 60px;
+  --spacing-section: calc(100svh - 120px);
+  --font-geo: 'Geo', sans-serif;
+  --font-vt: 'VT323', monospace
+
 }
