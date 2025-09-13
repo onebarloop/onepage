@@ -1,0 +1,6 @@
+@import 'tailwindcss';
+
+@theme {
+  --spacing-header: 120px;
+  --spacing-footer: 60px;
+}
