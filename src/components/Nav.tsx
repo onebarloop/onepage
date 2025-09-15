@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion, stagger, type Variants } from "motion/react";
+import { navItems } from "../config/nav-items";
 
 export default function Nav() {
   const [navOpen, setNavOpen] = useState(false);
@@ -7,6 +8,12 @@ export default function Nav() {
   const handleClick = () => {
     setNavOpen(!navOpen);
   };
+
+  const button: Variants = {
+    hidden: { scale: 0 },
+    show: { scale: 1.0, transition: { delay: 0.4 } },
+  };
+
   const container: Variants = {
     hidden: {
       width: 0,
@@ -30,49 +37,39 @@ export default function Nav() {
 
   return (
     <>
-      <AnimatePresence>
-        {!navOpen && (
-          <motion.button
-            initial={{ scale: 0 }}
-            animate={{ scale: 1.0 }}
-            exit={{ scale: 0 }}
-            onClick={handleClick}
-            className="absolute top-8 left-8"
-          >
-            Menu
-          </motion.button>
-        )}
+      <AnimatePresence initial={false}>
+        <motion.button
+          variants={button}
+          animate={navOpen ? "hidden" : "show"}
+          onClick={handleClick}
+          className="absolute top-8 left-8"
+        >
+          Menu
+        </motion.button>
       </AnimatePresence>
-      <AnimatePresence>
-        {navOpen && (
-          <motion.div
-            variants={container}
-            initial="hidden"
-            animate="show"
-            exit="hidden"
-            className="nav absolute h-screen w-auto overflow-hidden py-4"
-          >
-            <nav className="h-full overflow-hidden bg-fuchsia-300">
-              <div className="flex justify-end">
-                <button className="p-4" onClick={handleClick}>
-                  X
-                </button>
-              </div>
-              <ul className="text-2xl">
-                <motion.li variants={item}>
-                  <a className="p-4 text-nowrap" href="#1">
-                    Navigation Item 1
+      <AnimatePresence initial={false}>
+        <motion.div
+          variants={container}
+          animate={navOpen ? "show" : "hidden"}
+          className="nav absolute h-screen w-auto overflow-hidden py-4"
+        >
+          <nav className="h-full overflow-hidden bg-fuchsia-300">
+            <div className="flex justify-end">
+              <button className="p-4" onClick={handleClick}>
+                X
+              </button>
+            </div>
+            <ul className="text-2xl">
+              {Object.entries(navItems).map(([_key, navItem], i) => (
+                <motion.li key={i} variants={item}>
+                  <a className="p-4 text-nowrap" href={`#${navItem.id}`}>
+                    {navItem.label}
                   </a>
                 </motion.li>
-                <motion.li variants={item}>
-                  <a className="p-4 text-nowrap" href="#2">
-                    Navigation Item 2
-                  </a>
-                </motion.li>
-              </ul>
-            </nav>
-          </motion.div>
-        )}
+              ))}
+            </ul>
+          </nav>
+        </motion.div>
       </AnimatePresence>
     </>
   );
