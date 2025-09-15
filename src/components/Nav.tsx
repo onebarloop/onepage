@@ -11,21 +11,21 @@ export default function Nav() {
     hidden: {
       width: 0,
       transition: {
-        delay: 0.1,
+        delay: 0.2,
         delayChildren: stagger(0.1),
       },
     },
     show: {
       width: "auto",
       transition: {
-        delayChildren: stagger(0.2),
+        delayChildren: stagger(0.15),
       },
     },
   };
 
   const item: Variants = {
     hidden: { x: -500 },
-    show: { x: 0, transition: { type: "spring", bounce: 0.5 } },
+    show: { x: 0, transition: { type: "spring", bounce: 0.4 } },
   };
 
   return (
