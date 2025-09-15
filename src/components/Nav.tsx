@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { AnimatePresence, motion, stagger } from 'motion/react';
+import { useState } from "react";
+import { AnimatePresence, motion, stagger, type Variants } from "motion/react";
 
 export default function Nav() {
   const [navOpen, setNavOpen] = useState(false);
@@ -7,7 +7,7 @@ export default function Nav() {
   const handleClick = () => {
     setNavOpen(!navOpen);
   };
-  const container = {
+  const container: Variants = {
     hidden: {
       width: 0,
       transition: {
@@ -16,16 +16,16 @@ export default function Nav() {
       },
     },
     show: {
-      width: 'auto',
+      width: "auto",
       transition: {
         delayChildren: stagger(0.2),
       },
     },
   };
 
-  const item = {
-    hidden: { x: -1000 },
-    show: { x: 0 },
+  const item: Variants = {
+    hidden: { x: -500 },
+    show: { x: 0, transition: { type: "spring", bounce: 0.5 } },
   };
 
   return (
@@ -50,9 +50,9 @@ export default function Nav() {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="nav h-screen absolute py-4 w-auto overflow-hidden"
+            className="nav absolute h-screen w-auto overflow-hidden py-4"
           >
-            <nav className="bg-fuchsia-300 h-full overflow-hidden">
+            <nav className="h-full overflow-hidden bg-fuchsia-300">
               <div className="flex justify-end">
                 <button className="p-4" onClick={handleClick}>
                   X
