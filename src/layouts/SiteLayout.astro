@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import "@fontsource/geo";
 import "@fontsource/vt323";
+import '@fontsource-variable/jetbrains-mono';
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 ---
@@ -14,7 +15,7 @@ import Footer from "../components/Footer.astro";
     <meta name="generator" content={Astro.generator} />
     <title>Astro</title>
   </head>
-  <body class="min-h-svh bg-amber-100">
+  <body class="min-h-svh bg-amber-100 font-mono">
     <Header />
     <slot />
     <Footer />
