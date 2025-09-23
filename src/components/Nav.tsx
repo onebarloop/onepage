@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { AnimatePresence, motion, stagger, type Variants } from "motion/react";
 import { navItems } from "../config/nav-items";
+import { useObserver } from "../lib/hooks/useObserver";
 
 export default function Nav() {
   const [navOpen, setNavOpen] = useState(false);
+  const { activeSection } = useObserver(navItems);
 
   const handleClick = () => {
     setNavOpen(!navOpen);
@@ -59,9 +61,15 @@ export default function Nav() {
                 X
               </button>
             </div>
-            <ul className="text-2xl">
+            <ul className="space-y-4 text-2xl">
               {Object.entries(navItems).map(([_key, navItem], i) => (
-                <motion.li key={i} variants={item}>
+                <motion.li
+                  key={i}
+                  variants={item}
+                  className={
+                    activeSection === navItem.id ? "bg-fuchsia-500" : ""
+                  }
+                >
                   <a className="p-4 text-nowrap" href={`#${navItem.id}`}>
                     {navItem.label}
                   </a>
