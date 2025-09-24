@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AnimatePresence, motion, stagger, type Variants } from "motion/react";
 import { navItems } from "../config/nav-items";
 import { useObserver } from "../lib/hooks/useObserver";
+import { cn } from "../lib/cn";
 
 export default function Nav() {
   const [navOpen, setNavOpen] = useState(false);
@@ -19,6 +20,9 @@ export default function Nav() {
   const container: Variants = {
     hidden: {
       width: 0,
+      borderRight: "0px solid var(--color-foreground)",
+      borderTop: "0px solid var(--color-foreground)",
+      borderBottom: "0px solid var(--color-foreground)",
       transition: {
         delay: 0.2,
         delayChildren: stagger(0.1),
@@ -26,6 +30,9 @@ export default function Nav() {
     },
     show: {
       width: "auto",
+      borderRight: "3px solid var(--color-foreground)",
+      borderTop: "3px solid var(--color-foreground)",
+      borderBottom: "3px solid var(--color-foreground)",
       transition: {
         delayChildren: stagger(0.15),
       },
@@ -50,34 +57,36 @@ export default function Nav() {
         </motion.button>
       </AnimatePresence>
       <AnimatePresence initial={false}>
-        <motion.div
-          variants={container}
-          animate={navOpen ? "show" : "hidden"}
-          className="nav absolute h-screen w-auto overflow-hidden py-4"
-        >
-          <nav className="h-full overflow-hidden bg-fuchsia-300">
+        <div className="nav absolute h-screen w-auto py-4">
+          <motion.nav
+            variants={container}
+            animate={navOpen ? "show" : "hidden"}
+            className="bg-primary drop-shadow-l h-full overflow-hidden"
+          >
             <div className="flex justify-end">
-              <button className="p-4" onClick={handleClick}>
+              <button className="p-4 text-xl font-black" onClick={handleClick}>
                 X
               </button>
             </div>
-            <ul className="space-y-4 text-2xl">
+            <ul className="text-l space-y-4 pr-5 pl-4">
               {Object.entries(navItems).map(([_key, navItem], i) => (
-                <motion.li
-                  key={i}
-                  variants={item}
-                  className={
-                    activeSection === navItem.id ? "bg-fuchsia-500" : ""
-                  }
-                >
-                  <a className="p-4 text-nowrap" href={`#${navItem.id}`}>
+                <motion.li className="" key={i} variants={item}>
+                  <a
+                    className={cn(
+                      `drop-shadow-s block rounded-full border-2 p-4 text-nowrap transition-all hover:translate-x-1 hover:translate-y-1 hover:drop-shadow-xs`,
+                      activeSection === navItem.id
+                        ? "bg-accent"
+                        : "bg-primary-light",
+                    )}
+                    href={`#${navItem.id}`}
+                  >
                     {navItem.label}
                   </a>
                 </motion.li>
               ))}
             </ul>
-          </nav>
-        </motion.div>
+          </motion.nav>
+        </div>
       </AnimatePresence>
     </>
   );
