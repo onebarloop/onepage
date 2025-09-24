@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion, stagger, type Variants } from "motion/react";
-import { NAVIGATION } from "../config/nav-items";
+import { SECTIONS } from "../config/sections"; // <-- Use unified data
 import { useObserver } from "../lib/hooks/useObserver";
 import { cn } from "../lib/cn";
 
@@ -57,7 +57,7 @@ export default function Nav() {
         </motion.button>
       </AnimatePresence>
       <AnimatePresence initial={false}>
-        <div className="nav absolute h-screen w-auto py-4">
+        <div className="nav absolute h-screen w-auto py-8">
           <motion.nav
             variants={container}
             animate={navOpen ? "show" : "hidden"}
@@ -69,18 +69,16 @@ export default function Nav() {
               </button>
             </div>
             <ul className="text-l space-y-4 pr-5 pl-4">
-              {Object.entries(NAVIGATION).map(([_key, navItem], i) => (
-                <motion.li className="" key={i} variants={item}>
+              {SECTIONS.map(({ id, label }) => (
+                <motion.li key={id} variants={item}>
                   <a
                     className={cn(
                       `drop-shadow-s block rounded-full border-2 p-4 text-nowrap transition-all hover:translate-x-1 hover:translate-y-1 hover:drop-shadow-xs`,
-                      activeSection === navItem.id
-                        ? "bg-accent"
-                        : "bg-primary-light",
+                      activeSection === id ? "bg-accent" : "bg-primary-light",
                     )}
-                    href={`#${navItem.id}`}
+                    href={`#${id}`}
                   >
-                    {navItem.label}
+                    {label}
                   </a>
                 </motion.li>
               ))}

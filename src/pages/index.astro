@@ -1,29 +1,17 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 import SectionLayout from "../layouts/SectionLayout.astro";
-import { NAVIGATION, type Sections } from "../config/nav-items";
-import Hero from "../components/Hero.astro";
-import Section from "../components/Section.astro";
-import { type AstroComponentFactory } from "astro/runtime/server/index.js";
-
-const components: Record<Sections, AstroComponentFactory> = {
-  hero: Hero,
-  section1: Section,
-  section2: Section,
-};
+import { SECTIONS } from "../config/sections";
 ---
 
 <SiteLayout>
-  <main class="pt-header">
+  <main>
     {
-      Object.entries(NAVIGATION).map(([key, navItem]) => {
-        const Component = components[key as Sections];
-        return (
-          <SectionLayout id={navItem.id}>
-            <Component />
-          </SectionLayout>
-        );
-      })
+      SECTIONS.map(({ id, component: Component, backgroundColor }) => (
+        <SectionLayout id={id} class={backgroundColor}>
+          <Component />
+        </SectionLayout>
+      ))
     }
   </main>
 </SiteLayout>

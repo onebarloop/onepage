@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { NAVIGATION } from "../../config/nav-items";
+import { SECTIONS } from "../../config/sections";
 
 export function useObserver() {
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
   useEffect(() => {
     const sections = document.querySelectorAll(
-      Object.values(NAVIGATION)
+      Object.values(SECTIONS)
         .map((item) => `#${item.id}`)
         .join(","),
     );
