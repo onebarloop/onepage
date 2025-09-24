@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
+import { NAVIGATION } from "../../config/nav-items";
 
-export function useObserver(navItems: Record<string, { id: string }>) {
+export function useObserver() {
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
   useEffect(() => {
     const sections = document.querySelectorAll(
-      Object.values(navItems)
+      Object.values(NAVIGATION)
         .map((item) => `#${item.id}`)
-        .join(", "),
+        .join(","),
     );
 
     const observer = new IntersectionObserver(
@@ -28,7 +29,7 @@ export function useObserver(navItems: Record<string, { id: string }>) {
     sections.forEach((section) => observer.observe(section));
 
     return () => observer.disconnect();
-  }, [navItems]);
+  }, []);
 
   return { activeSection };
 }

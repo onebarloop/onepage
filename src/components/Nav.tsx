@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { AnimatePresence, motion, stagger, type Variants } from "motion/react";
-import { navItems } from "../config/nav-items";
+import { NAVIGATION } from "../config/nav-items";
 import { useObserver } from "../lib/hooks/useObserver";
 import { cn } from "../lib/cn";
 
 export default function Nav() {
   const [navOpen, setNavOpen] = useState(false);
-  const { activeSection } = useObserver(navItems);
+  const { activeSection } = useObserver();
 
   const handleClick = () => {
     setNavOpen(!navOpen);
@@ -69,7 +69,7 @@ export default function Nav() {
               </button>
             </div>
             <ul className="text-l space-y-4 pr-5 pl-4">
-              {Object.entries(navItems).map(([_key, navItem], i) => (
+              {Object.entries(NAVIGATION).map(([_key, navItem], i) => (
                 <motion.li className="" key={i} variants={item}>
                   <a
                     className={cn(

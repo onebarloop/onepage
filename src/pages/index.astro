@@ -1,7 +1,7 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 import SectionLayout from "../layouts/SectionLayout.astro";
-import { navItems, type Sections } from "../config/nav-items";
+import { NAVIGATION, type Sections } from "../config/nav-items";
 import Hero from "../components/Hero.astro";
 import Section from "../components/Section.astro";
 import { type AstroComponentFactory } from "astro/runtime/server/index.js";
@@ -16,7 +16,7 @@ const components: Record<Sections, AstroComponentFactory> = {
 <SiteLayout>
   <main class="pt-header">
     {
-      Object.entries(navItems).map(([key, navItem]) => {
+      Object.entries(NAVIGATION).map(([key, navItem]) => {
         const Component = components[key as Sections];
         return (
           <SectionLayout id={navItem.id}>
