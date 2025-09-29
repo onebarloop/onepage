@@ -13,8 +13,8 @@ export default function Nav() {
   };
 
   const button: Variants = {
-    hidden: { scale: 0 },
-    show: { scale: 1.0, transition: { delay: 0.4 } },
+    hidden: { left: -120 },
+    show: { left: -12, transition: { delay: 0.4 } },
   };
 
   const container: Variants = {
@@ -34,6 +34,7 @@ export default function Nav() {
       borderTop: "3px solid var(--color-foreground)",
       borderBottom: "3px solid var(--color-foreground)",
       transition: {
+        delay: 0.2,
         delayChildren: stagger(0.15),
       },
     },
@@ -51,7 +52,7 @@ export default function Nav() {
           variants={button}
           animate={navOpen ? "hidden" : "show"}
           onClick={handleClick}
-          className="absolute top-8 left-8"
+          className="bg-primary absolute top-8 cursor-pointer rounded-r-full p-4 pl-6 drop-shadow-xs transition-[padding] hover:pl-10"
         >
           Menu
         </motion.button>
@@ -61,10 +62,13 @@ export default function Nav() {
           <motion.nav
             variants={container}
             animate={navOpen ? "show" : "hidden"}
-            className="bg-primary drop-shadow-l h-full overflow-hidden"
+            className="bg-primary drop-shadow-l h-full space-y-4 overflow-hidden"
           >
             <div className="flex justify-end">
-              <button className="p-4 text-xl font-black" onClick={handleClick}>
+              <button
+                className="font-vt aspect-square w-10 cursor-pointer border-b-3 border-l-3 p-2 text-2xl font-black"
+                onClick={handleClick}
+              >
                 X
               </button>
             </div>
@@ -73,8 +77,10 @@ export default function Nav() {
                 <motion.li key={id} variants={item}>
                   <a
                     className={cn(
-                      `drop-shadow-s block rounded-full border-2 p-4 text-nowrap transition-all hover:translate-x-1 hover:translate-y-1 hover:drop-shadow-xs`,
-                      activeSection === id ? "bg-accent" : "bg-primary-light",
+                      `block rounded-full border-2 p-4 text-nowrap transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:drop-shadow-none`,
+                      activeSection === id
+                        ? "bg-accent drop-shadow-s -translate-x-0.5 -translate-y-0.5"
+                        : "bg-primary-light drop-shadow-xs",
                     )}
                     href={`#${id}`}
                   >

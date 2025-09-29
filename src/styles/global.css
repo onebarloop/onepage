@@ -15,9 +15,10 @@
   --color-primary-light: #f8d6b3;
   --color-accent: #fdfd96;
 
-
+  --drop-shadow-reverse: -2px -2px var(--color-foreground);
+  --drop-shadow-xxs: 2px 2px var(--color-foreground);
   --drop-shadow-xs: 4px 4px var(--color-foreground);
-  --drop-shadow-s: 8px 8px var(--color-foreground);
+  --drop-shadow-s: 6px 6px var(--color-foreground);
   --drop-shadow-m: 10px 10px var(--color-foreground);
   --drop-shadow-l: 12px 12px var(--color-foreground);
   --drop-shadow-xl: 14px 14px var(--color-foreground);
