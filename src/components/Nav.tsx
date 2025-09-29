@@ -2,7 +2,7 @@ import { useState } from "react";
 import { AnimatePresence, motion, stagger, type Variants } from "motion/react";
 import { SECTIONS } from "../config/sections"; // <-- Use unified data
 import { useObserver } from "../lib/hooks/useObserver";
-import { cn } from "../lib/cn";
+import { cn } from "../lib/utils/cn";
 
 export default function Nav() {
   const [navOpen, setNavOpen] = useState(false);
