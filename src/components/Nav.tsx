@@ -52,7 +52,7 @@ export default function Nav() {
           variants={button}
           animate={navOpen ? "hidden" : "show"}
           onClick={handleClick}
-          className="bg-primary absolute top-8 cursor-pointer rounded-r-full p-4 pl-6 drop-shadow-xs transition-[padding] hover:pl-10"
+          className="bg-accent border-foreground text-background absolute top-8 cursor-pointer rounded-r-full border-2 p-4 pl-6 drop-shadow-xs transition-[padding] hover:pl-10"
         >
           Menu
         </motion.button>
@@ -62,7 +62,7 @@ export default function Nav() {
           <motion.nav
             variants={container}
             animate={navOpen ? "show" : "hidden"}
-            className="bg-primary drop-shadow-l h-full space-y-4 overflow-hidden"
+            className="bg-medium drop-shadow-l h-full space-y-4 overflow-hidden"
           >
             <div className="flex justify-end">
               <button
@@ -77,10 +77,10 @@ export default function Nav() {
                 <motion.li key={id} variants={item}>
                   <a
                     className={cn(
-                      `block rounded-full border-2 p-4 text-nowrap transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:drop-shadow-none`,
+                      `active:drop-shadow-reverse border-foreground block rounded-full border-2 p-4 text-nowrap transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:drop-shadow-none active:translate-x-1 active:translate-y-1`,
                       activeSection === id
-                        ? "bg-accent drop-shadow-s -translate-x-0.5 -translate-y-0.5"
-                        : "bg-primary-light drop-shadow-xs",
+                        ? "bg-accent drop-shadow-s text-background -translate-x-0.5 -translate-y-0.5"
+                        : "bg-light drop-shadow-xs",
                     )}
                     href={`#${id}`}
                   >
