@@ -3,6 +3,7 @@ import { AnimatePresence, motion, stagger, type Variants } from "motion/react";
 import { SECTIONS } from "../config/sections"; // <-- Use unified data
 import { useObserver } from "../lib/hooks/useObserver";
 import { cn } from "../lib/utils/cn";
+import Colorpicker from "./Colorpicker";
 
 export default function Nav() {
   const [navOpen, setNavOpen] = useState(false);
@@ -52,7 +53,7 @@ export default function Nav() {
           variants={button}
           animate={navOpen ? "hidden" : "show"}
           onClick={handleClick}
-          className="bg-accent border-foreground text-background absolute top-8 cursor-pointer rounded-r-full border-2 p-4 pl-6 drop-shadow-xs transition-[padding] hover:pl-10"
+          className="bg-accent border-foreground text-text-light absolute top-8 cursor-pointer rounded-r-full border-2 p-4 pl-6 drop-shadow-xs transition-[padding] hover:pl-10"
         >
           Menu
         </motion.button>
@@ -79,7 +80,7 @@ export default function Nav() {
                     className={cn(
                       `active:drop-shadow-reverse border-foreground block rounded-full border-2 p-4 text-nowrap transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:drop-shadow-none active:translate-x-1 active:translate-y-1`,
                       activeSection === id
-                        ? "bg-accent drop-shadow-s text-background -translate-x-0.5 -translate-y-0.5"
+                        ? "bg-accent drop-shadow-s text-text-light -translate-x-0.5 -translate-y-0.5"
                         : "bg-light drop-shadow-xs",
                     )}
                     href={`#${id}`}

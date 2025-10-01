@@ -15,6 +15,8 @@
   --color-light: var(--light);
   --color-medium: var(--medium);
   --color-dark: var(--dark);
+  --color-text-light: var(--text-light);
+  --color-text-dark: var(--text-dark);
 
   --drop-shadow-reverse: -2px -2px var(--color-foreground);
   --drop-shadow-xxs: 2px 2px var(--color-foreground);
@@ -31,5 +33,7 @@
   --accent: #ff008c;
   --light: #ece7e1;
   --medium: #d6cfc7;
-  --dark: #d6cfc7;
+  --dark: #bcafa2;
+  --text-light: #f9f6f3;
+  --text-dark: #2d2d2d;
 }

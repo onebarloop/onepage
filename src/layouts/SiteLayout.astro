@@ -7,6 +7,7 @@ import "@fontsource-variable/lexend-mega";
 import "@fontsource-variable/public-sans";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Colorpicker from "../components/Colorpicker";
 ---
 
 <html lang="en" class="scroll-smooth">
@@ -17,9 +18,10 @@ import Footer from "../components/Footer.astro";
     <meta name="generator" content={Astro.generator} />
     <title>Astro</title>
   </head>
-  <body class="bg-background text-foreground font-sans">
+  <body class="bg-background text-text-dark font-sans">
     <Header />
     <slot />
+    <Colorpicker client:load /> 
     <Footer />
   </body>
 </html>
