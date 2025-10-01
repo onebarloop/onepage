@@ -67,11 +67,9 @@ export default function Nav() {
           >
             <div className="flex justify-end">
               <button
-                className="font-vt border-foreground aspect-square w-10 cursor-pointer border-b-3 border-l-3 p-2 text-2xl font-black"
+                className="font-vt bg-medium border-foreground aspect-square h-10 w-10 cursor-pointer rounded-bl-full p-2 text-2xl font-black transition-all hover:border-b-12 hover:border-l-12"
                 onClick={handleClick}
-              >
-                X
-              </button>
+              ></button>
             </div>
             <ul className="text-l space-y-4 pr-5 pl-4">
               {SECTIONS.map(({ id, label }) => (

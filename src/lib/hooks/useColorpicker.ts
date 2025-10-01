@@ -9,7 +9,7 @@ export function useColorpicker() {
     "--background": "",
     "--light": "",
     "--medium": "",
-    "--dark": "",
+    "--dark": ""
   });
   const firstRender = useRef(true);
 

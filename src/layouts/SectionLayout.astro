@@ -3,8 +3,8 @@ const { id, class: className } = Astro.props;
 import { cn } from "../lib/utils/cn";
 ---
 
-<section id={id} class:list={cn("min-h-svh", className)}>
-  <div class="container mx-auto pt-8">
+<section id={id} class:list={cn("min-h-svh mb-16", className)}>
+  <div class="container px-4 mx-auto pt-8">
     <slot />
   </div>
 </section>
