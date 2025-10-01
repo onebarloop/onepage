@@ -53,7 +53,7 @@ export default function Nav() {
           variants={button}
           animate={navOpen ? "hidden" : "show"}
           onClick={handleClick}
-          className="bg-accent border-foreground text-text-light absolute top-8 cursor-pointer rounded-r-full border-2 p-4 pl-6 drop-shadow-xs transition-[padding] hover:pl-10"
+          className="bg-accent text-text-light border-foreground absolute top-8 cursor-pointer rounded-r-full border-2 p-4 pl-6 drop-shadow-xs transition-[padding] hover:pl-10"
         >
           Menu
         </motion.button>
@@ -67,7 +67,7 @@ export default function Nav() {
           >
             <div className="flex justify-end">
               <button
-                className="font-vt aspect-square w-10 cursor-pointer border-b-3 border-l-3 p-2 text-2xl font-black"
+                className="font-vt border-foreground aspect-square w-10 cursor-pointer border-b-3 border-l-3 p-2 text-2xl font-black"
                 onClick={handleClick}
               >
                 X
@@ -78,7 +78,7 @@ export default function Nav() {
                 <motion.li key={id} variants={item}>
                   <a
                     className={cn(
-                      `active:drop-shadow-reverse border-foreground block rounded-full border-2 p-4 text-nowrap transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:drop-shadow-none active:translate-x-1 active:translate-y-1`,
+                      `active:drop-shadow-reverse border-foreground block rounded-full border-2 p-4 text-nowrap transition-[filter,translate] hover:translate-x-0.5 hover:translate-y-0.5 hover:drop-shadow-none active:translate-x-1 active:translate-y-1`,
                       activeSection === id
                         ? "bg-accent drop-shadow-s text-text-light -translate-x-0.5 -translate-y-0.5"
                         : "bg-light drop-shadow-xs",
