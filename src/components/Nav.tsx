@@ -1,17 +1,16 @@
-import { useState } from "react";
+import { useRef } from "react";
 import { AnimatePresence, motion, stagger, type Variants } from "motion/react";
 import { SECTIONS } from "../config/sections"; // <-- Use unified data
 import { useObserver } from "../lib/hooks/useObserver";
 import { cn } from "../lib/utils/cn";
-import Colorpicker from "./Colorpicker";
+import { useMenu } from "../lib/hooks/useMenu";
 
 export default function Nav() {
-  const [navOpen, setNavOpen] = useState(false);
-  const { activeSection } = useObserver();
+  const menuButton = useRef<HTMLButtonElement | null>(null);
+  const nav = useRef<HTMLDivElement | null>(null);
 
-  const handleClick = () => {
-    setNavOpen(!navOpen);
-  };
+  const { activeSection } = useObserver();
+  const { navOpen, setNavOpen } = useMenu(nav, menuButton);
 
   const button: Variants = {
     hidden: { left: -120 },
@@ -50,16 +49,17 @@ export default function Nav() {
     <>
       <AnimatePresence initial={false}>
         <motion.button
+          ref={menuButton}
           variants={button}
           animate={navOpen ? "hidden" : "show"}
-          onClick={handleClick}
-          className="bg-accent text-text-light border-foreground absolute top-8 cursor-pointer rounded-r-full border-2 p-4 pl-6 drop-shadow-xs transition-[padding] hover:pl-10"
+          onClick={() => setNavOpen(!navOpen)}
+          className="nav-button bg-accent text-text-light border-foreground absolute top-8 cursor-pointer rounded-r-full border-2 p-4 pl-6 drop-shadow-xs transition-[padding] hover:pl-10 focus:outline-none"
         >
           Menu
         </motion.button>
       </AnimatePresence>
       <AnimatePresence initial={false}>
-        <div className="nav absolute h-screen w-auto py-8">
+        <div className="nav absolute h-screen w-auto py-8" ref={nav}>
           <motion.nav
             variants={container}
             animate={navOpen ? "show" : "hidden"}
@@ -68,7 +68,7 @@ export default function Nav() {
             <div className="flex justify-end">
               <button
                 className="font-vt bg-medium border-foreground aspect-square h-10 w-10 cursor-pointer rounded-bl-full p-2 text-2xl font-black transition-all hover:border-b-12 hover:border-l-12"
-                onClick={handleClick}
+                onClick={() => setNavOpen(!navOpen)}
               ></button>
             </div>
             <ul className="text-l space-y-4 pr-5 pl-4">
