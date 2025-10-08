@@ -2,6 +2,8 @@
 import SiteLayout from "../layouts/SiteLayout.astro";
 import SectionLayout from "../layouts/SectionLayout.astro";
 import { SECTIONS } from "../config/sections";
+console.log("This runs on the server!", new Date());
+const serverTime = new Date().toISOString();
 ---
 
 <SiteLayout>

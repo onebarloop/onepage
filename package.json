@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
+    "@astrojs/node": "^9.4.4",
     "@astrojs/react": "^4.3.1",
     "@fontsource-variable/azeret-mono": "^5.2.10",
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
