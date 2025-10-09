@@ -1,5 +1,13 @@
+---
+const { class: className } = Astro.props;
+import { cn } from "../lib/utils/cn";
+---
+
 <div
-  class="border-foreground drop-shadow-l relative flex w-full overflow-hidden rounded-l-2xl border-4"
+  class={cn(
+    "border-foreground drop-shadow-l relative flex w-full overflow-hidden rounded-l-2xl border-4",
+    className,
+  )}
 >
   <div class="bg-dark w-8 shrink-0"></div>
   <div class="bg-medium w-8 shrink-0"></div>

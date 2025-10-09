@@ -1,6 +1,7 @@
 import { type AstroComponentFactory } from "astro/runtime/server/index.js";
 import Hero from "../components/sections/Hero.astro";
-import Section from "../components/sections/Section.astro";
+import AboutMe from "../components/sections/AboutMe.astro";
+import OtherSection from "../components/sections/OtherSection.astro";
 
 export type SectionConfig = {
   id: string;
@@ -16,14 +17,14 @@ export const SECTIONS: SectionConfig[] = [
     component: Hero,
   },
   {
-    id: "section1",
+    id: "about-me",
     label: "Navigation Item 2",
-    component: Section,
+    component: AboutMe,
     backgroundColor: "bg-primary-light",
   },
   {
-    id: "section2",
+    id: "other-section",
     label: "Navigation Item 3",
-    component: Section,
+    component: OtherSection,
   },
 ];

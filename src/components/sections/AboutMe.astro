@@ -1,15 +1,16 @@
 ---
 import CardLayout from "../../layouts/CardLayout.astro";
+import { Image } from "astro:assets";
+import me from "../../img/me.jpg";
 ---
 
 <h2
   class="mb-20 text-right font-sans text-8xl font-thin wrap-break-word uppercase"
-  lang="en"
 >
-  Welcome <span class="font-black">Hero</span>
+  About <span class="font-black">Me</span>
 </h2>
-<div class="grid gap-x-12 gap-y-10 xl:grid-cols-2">
-  <CardLayout class="col-span-2">
+<div class="grid items-start gap-x-20 gap-y-10 xl:grid-cols-2">
+  <CardLayout>
     <p>
       Dolorem ullamcorper conubia, molestias quod, pharetra incididunt, gravida
       consectetuer scelerisque adipiscing ultrices? Dicta iaculis tempora sed
@@ -19,15 +20,25 @@ import CardLayout from "../../layouts/CardLayout.astro";
       distinctio pretium? Sit nullam tempora, laboris odit facilisis nunc nisl
       euismod, ipsum, molestie quam, eligendi, perspiciatis dignissimos? Eos?
       Eveniet purus dolores, ipsum. Minima? Pede commodi aenean blandit natus
-      harum optio dictum dapibus elementum? Enim eiusmod quia hic! Lacinia,
-      deserunt itaque molestiae incidunt justo possimus? Primis pulvinar?
-      Doloribus fuga culpa, euismod et nisi dolore! Sit platea? Nemo conubia.
+      harum optio dictum dapibus elementum?
     </p>
   </CardLayout>
   <CardLayout>
-    <p>T Dolorem ullamcorper conubia, molestias quod, pharetra incididunt, gravida
-      consectetuer scelerisque adipiscing ultrices? Dicta iaculis tempora sed
-      accumsan reiciendis praesent minima veritatis ridiculus rutrum voluptates,
-      esse adipiscing! Tellus voluptate donec! Quidem vel diam?</p>
+    <div class="flex items-start gap-4">
+      <Image
+        src={me}
+        alt="Picture of me"
+        class="rounded-lg"
+        width="150"
+        height="150"
+      />
+      <p>
+        Dolorem ullamcorper conubia, molestias quod, pharetra incididunt,
+        gravida consectetuer scelerisque adipiscing ultrices? Dicta iaculis
+        tempora sed accumsan reiciendis praesent minima veritatis ridiculus
+        rutrum voluptates, esse adipiscing! Tellus voluptate donec! Quidem vel
+        diam?
+      </p>
+    </div>
   </CardLayout>
 </div>
